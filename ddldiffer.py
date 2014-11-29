@@ -2,16 +2,21 @@
 
 import sys
 import os
-import sqlite3
+import os.path
 import shutil
 import time
 import configparser
 
 
 def init():
+    global config
     config = configparser.SafeConfigParser()
     config.read("ddldiffer.conf")
-    #print(config.get('database', 'host'))
+    path = config.get('local','sqlpath');
+    if os.path.exists(path) != True:
+        print("Can't accesss sqlpath :", path);
+        exit(-1)
+    return config
 
 def help():
     text = (
@@ -22,7 +27,29 @@ def help():
     print(text)
     return
 
+def readConfig(section,key):
+    result = config.get(section, key)
+    # TODO Error Check
+    return result
+
 def dump():
+    # Ready Connect Database
+    host = readConfig('database','host')
+    user = readConfig('database','user')
+    passwd = readConfig('database','passwd')
+    port = readConfig('database', 'port')
+    db = readConfig('database','database')
+
+    # Connect
+
+
+    # GetTableList
+
+
+    # GetDDL
+
+
+    # DisConnect
 
     return
 
