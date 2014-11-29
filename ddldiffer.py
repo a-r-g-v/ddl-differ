@@ -5,7 +5,13 @@ import os
 import sqlite3
 import shutil
 import time
+import configparser
 
+
+def init():
+    config = configparser.SafeConfigParser()
+    config.read("ddldiffer.conf")
+    #print(config.get('database', 'host'))
 
 def help():
 
@@ -25,7 +31,7 @@ def diff():
     return 
 
 if __name__ == "__main__":
-    
+    init()    
     argvs = sys.argv
     if len(argvs) < 2:
         help()
