@@ -14,7 +14,6 @@ def init():
     #print(config.get('database', 'host'))
 
 def help():
-
     text = (
 	'Usage:\n'
 	' ddldiffer dump        Reverse MySQL Server and Dump DDL  \n'
